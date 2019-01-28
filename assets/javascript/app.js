@@ -96,7 +96,7 @@ $("#add-gif").on("click", function(event) {
 $(document).on("click", ".gif", displayGifInfo);
 
 // Adding click event listeners to all elements with a class of "still-gif"
-$(document).on("click", ".still-gif", displayLiveGif);
+// $(document).on("click", ".still-gif", displayLiveGif);
 
 
 // Calling the renderButtons function to display the intial buttons

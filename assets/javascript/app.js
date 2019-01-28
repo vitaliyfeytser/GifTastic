@@ -42,15 +42,16 @@ function displayGifInfo() {
             $div.append($rating);
 
             // Creates an element to hold the image
-            var $img = $('<img class="still-gif">').attr('src', response.data[i].images.fixed_height_still.url);
-            var $img2 = $('<img class="live-gif">').attr('src', response.data[i].images.fixed_height.url);
+            var $img = $('<img class="gif" src="'+response.data[i].images.fixed_height_still.url+'" data-still="'+response.data[i].images.fixed_height_still.url+'" data-animate="'+response.data[i].images.fixed_height.url+'" data-state="still" >');
+            // var $img2 = $('<img class="live-gif" id="live-gif'+ i +'">').attr('src', response.data[i].images.fixed_height.url);
 
             // Appends the image
-            $div.append($img2);
             $div.append($img);
+            // $div.append($img2);
 
             // Puts the entire gif above the previous gifs.
             $('#gifs-view').append($div);
+            // $('.live-gif').hide();
             
         }
     });
@@ -69,7 +70,7 @@ function renderButtons() {
         // Then dynamicaly generates buttons for each gif in the array
         var a = $('<button type="button" class="btn btn-success"></button>');
         // Adds a class of gif to our button
-        a.addClass("gif");
+        a.addClass("gif-category");
         // Added a data-attribute
         a.attr("data-name", gifs[i]);
         // Provided the initial button text
@@ -93,7 +94,13 @@ $("#add-gif").on("click", function(event) {
 });
 
 // Adding click event listeners to all elements with a class of "gif"
-$(document).on("click", ".gif", displayGifInfo);
+$(document).on("click", ".gif-category", displayGifInfo);
+
+
+// function displayLiveGif() {
+//     $('.still-gif').hide();
+//     $('.live-gif').show();
+// };
 
 // Adding click event listeners to all elements with a class of "still-gif"
 // $(document).on("click", ".still-gif", displayLiveGif);
@@ -101,3 +108,19 @@ $(document).on("click", ".gif", displayGifInfo);
 
 // Calling the renderButtons function to display the intial buttons
 renderButtons();
+
+$(document).on("click", ".gif", function() {
+// $(".gif").on("click", function() {
+    // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+    var state = $(this).attr("data-state");
+    // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+    // Then, set the image's data-state to animate
+    // Else set src to the data-still value
+    if (state === "still") {
+      $(this).attr("src", $(this).attr("data-animate"));
+      $(this).attr("data-state", "animate");
+    } else {
+      $(this).attr("src", $(this).attr("data-still"));
+      $(this).attr("data-state", "still");
+    }
+  });

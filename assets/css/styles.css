@@ -1,3 +1,20 @@
 .gif-category {
     margin: .25em;
 }
+
+#gifs-view {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+.gif-container {
+    margin: .25em;
+}
+
+.category-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}

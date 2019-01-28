@@ -1,7 +1,7 @@
 
 
 // Initial array of gifs
-var gifs = ["Cats", "Dogs", "Funny", "Toons"];
+var gifs = ["cats", "dogs", "funny", "toons", "asteroids", "astronomy", "atoms", "bill nye", "biology", "bubbles", "chemistry", "computers", "diy", "engineering", "global warming", "laser", "magnets", "mathematics", "medicine", "meteor", "molecules", "nebula", "nuclear", "physics", "planets", "robot", "space", "stars", "technology"];
 
 // displayGifInfo function re-renders the HTML to display the appropriate content
 function displayGifInfo() {
@@ -24,10 +24,12 @@ function displayGifInfo() {
         console.log('response.length', response.length);
         console.log('#gif-info', $('#gif-info'));
 
+        // Create a div to hold a category of gifs
+        var $categoryDiv = $('<div class="category-container">');
 
         for (var i = 0; i < response.data.length; i++) {
             // Creates a div to hold the gif
-            var $div = $('<div>');
+            var $div = $('<div class="gif-container">');
             console.log('response.data.length: ', response.data.length);
 
             // Retrieves the Rating Data
@@ -50,10 +52,11 @@ function displayGifInfo() {
             // $div.append($img2);
 
             // Puts the entire gif above the previous gifs.
-            $('#gifs-view').append($div);
-            // $('.live-gif').hide();
-            
+            $categoryDiv.prepend($div);
+            // $('.live-gif').hide();           
         }
+        // Puts the category-container above the previous gifs.
+        $('#gifs-view').prepend($categoryDiv);
     });
 
 }
@@ -97,17 +100,6 @@ $("#add-gif").on("click", function(event) {
 $(document).on("click", ".gif-category", displayGifInfo);
 
 
-// function displayLiveGif() {
-//     $('.still-gif').hide();
-//     $('.live-gif').show();
-// };
-
-// Adding click event listeners to all elements with a class of "still-gif"
-// $(document).on("click", ".still-gif", displayLiveGif);
-
-
-// Calling the renderButtons function to display the intial buttons
-renderButtons();
 
 $(document).on("click", ".gif", function() {
 // $(".gif").on("click", function() {
@@ -124,3 +116,8 @@ $(document).on("click", ".gif", function() {
       $(this).attr("data-state", "still");
     }
   });
+
+
+
+// Calling the renderButtons function to display the intial buttons
+renderButtons();

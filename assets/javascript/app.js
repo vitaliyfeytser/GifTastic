@@ -12,7 +12,7 @@ function displayGifInfo() {
     // our Rendition Guide.
 
     var gif = $(this).attr("data-name");
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gif + "&api_key=B8fk0JOSuy0wy4G04UFNboTmVGlWQiI9&limit=10"; //ADD MY API KEY & set gif limit to 10
+    var queryURL = "//api.giphy.com/v1/gifs/search?q=" + gif + "&api_key=B8fk0JOSuy0wy4G04UFNboTmVGlWQiI9&limit=10"; //ADD MY API KEY & set gif limit to 10
 
     // Creates AJAX call for the specific gif button being clicked
     $.ajax({

@@ -94,6 +94,7 @@ $("#add-gif").on("click", function(event) {
 
     // Calling renderButtons which handles the processing of our gif array
     renderButtons();
+    $("#gif-input").val('');
 });
 
 // Adding click event listeners to all elements with a class of "gif"
